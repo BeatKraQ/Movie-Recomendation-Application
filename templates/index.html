@@ -1,0 +1,326 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <title>Movie Today</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Movie Today</h1>
+            </div>
+            <div class = "end_bx">
+                <ul>
+                    <li class='home_btn'><a href="/">홈</a></li>
+                </ul>
+                <form class = 'search' action="/recommendation" method="POST">
+                    <input type="text" placeholder="최근 재밌게 본 영화를 입력해주세요..." id="search" name='movie_give'>
+                    <p id="search_icon">추천</p>
+                    <input type="submit">
+                    {% if error %}
+                    <div class="search_bx2">
+                        <p style="color:#BF270F; font-weight:bold;">앗! 목록에 없는 영화를 입력하셨습니다</p>
+                    </div>
+                    {% endif %}
+                </form>
+                <ul>
+                    <li><a href="index.html">내가 찜한 컨텐츠</a></li>
+                </ul>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="https://discord.com"><i class="left-menu-icon fa-brands fa-discord"></i></a>
+        <a href="https://facebook.com"><i class="left-menu-icon fa-brands fa-facebook"></i></a>
+        <a href="https://instagram.com"><i class="left-menu-icon fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com"><i class="left-menu-icon fa-brands fa-twitter"></i></a>
+        <a href="https://tiktok.com"><i class="left-menu-icon fa-brands fa-tiktok"></i></a>
+        <a href="https://reddit.com"><i class="left-menu-icon fa-brands fa-reddit"></i></a>
+        <a href="https://google.com"><i class="left-menu-icon fa-brands fa-google"></i></a>
+    </div>
+    <div class="container">
+        <div class="content-container">
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('{{ url_for('static', filename='img/topgun.png') }}'); background-size: cover;">
+                <img class="featured-title" src="{{ url_for('static', filename='img/topgun2.jpg') }}" alt="">
+                <h3>탑건: 매버릭</h3>
+                <p class="featured-desc">해군 최신 전투기 F-14기를 모는 젊은 조종사 매버릭 대위(톰 크루즈)는 최고의 실력을 자부하는 파일럿으로 최정예 전투기 조종사를 양성하는 ‘탑건’ 훈련학교에 입학하게 된다. 그리고 그곳에서 생도들의 교육을 담당하는 항공물리학 전문가 찰리(켈리 맥길리스)와 사랑에 빠진다. 그러나 비행 훈련 도중 매버릭이 몰던 전투기가 제트 기류에 빠지면서 엔진 고장을 일으키고, 이때 함께 탈출을 시도하던 파트너 구즈가 목숨을 잃게 된다...</p>
+                <a class="featured-button" href="#">WATCH</a>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">기대되는 개봉임박 영화!</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon0'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon0'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon0'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon0'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon1'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon1'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon1'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon1'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon2'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon2'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon2'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon2'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon3'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon3'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon3'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon3'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon4'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon4'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon4'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon4'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon5'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon5'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon5'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon5'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon6'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon6'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon6'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon6'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon7'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon7'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon7'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon7'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ a['soon8'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ a['soon8'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ a['soon8'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ a['soon8'][3] }}">WATCH</a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">꼭 봐야하는 최신영화!</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new0'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new0'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new0'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new0'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new1'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new1'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new1'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new1'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new2'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new2'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new2'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new2'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new3'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new3'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new3'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new3'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new4'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new4'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new4'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new4'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new5'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new5'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new5'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new5'][3] }}">WATCH</a>
+                        </div>                   
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new6'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new6'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new6'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new6'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new7'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new7'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new7'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new7'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ b['new8'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ b['new8'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ b['new8'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ b['new8'][3] }}">WATCH</a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('{{ url_for('static', filename='img/film10.jpg') }}'); background-size: cover;">
+                <img class="featured-title" src="https://movie-phinf.pstatic.net/20220516_144/1652665409592Chvey_JPEG/movie_image.jpg?type=m203_290_2" alt="">
+                <h3>범죄도시 2</h3>
+                <p class="featured-desc">가리봉동 소탕작전 후 4년 뒤, 금천서 강력반은 베트남으로 도주한 용의자를 인도받아 오라는 미션을 받는다.  괴물형사 ‘마석도’(마동석)와 ‘전일만’(최귀화) 반장은 현지 용의자에게서 수상함을 느끼고, 그의 뒤에 무자비한 악행을 벌이는 ‘강해상’(손석구)이 있음을 알게 된다.  ‘마석도’와 금천서 강력반은 한국과 베트남을 오가며 역대급 범죄를 저지르는 ‘강해상’을 본격적으로 쫓기 시작하는데...  나쁜 놈들 잡는 데 국경 없다! 통쾌하고 화끈한 범죄 소탕 작전이 다시 펼쳐진다!</p>
+                <a class="featured-button" href="#">WATCH</a>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">평점 좋은 액션 영화 라인업!</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action0'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action0'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action0'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action0'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action1'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action1'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action1'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action1'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action2'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action2'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action2'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action2'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action3'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action3'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action3'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action3'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action4'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action4'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action4'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action4'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action5'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action5'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action5'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action5'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action6'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action6'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action6'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action6'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action7'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action7'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action7'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action7'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ c['action8'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ c['action8'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ c['action8'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ c['action8'][3] }}">WATCH</a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">박장대소 코미디 라인업!</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy0'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy0'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy0'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy0'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy1'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy1'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy1'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy1'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy2'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy2'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy2'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy2'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy3'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy3'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy3'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy3'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy4'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy4'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy4'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy4'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy5'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy5'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy5'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy5'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy6'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy6'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy6'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy6'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy7'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy7'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy7'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy7'][3] }}">WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ d['comedy8'][0] }}" alt="">
+                            <span class="movie-list-item-title">{{ d['comedy8'][1] }}</span>
+                            <p class="movie-list-item-desc">{{ d['comedy8'][2] }}</p>
+                            <a class="movie-list-item-button" href="{{ d['comedy8'][3] }}">WATCH</a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+
+</html>

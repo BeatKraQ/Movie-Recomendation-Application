@@ -1,0 +1,191 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <title>Movie Today</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Movie Today</h1>
+            </div>
+            <div class = "end_bx">
+                <ul>
+                    <li class='home_btn'><a href="/">홈</a></li>
+                </ul>
+                <form class = 'search' action="/" method="POST">
+                    <input type="text" placeholder="최근 재밌게 본 영화를 입력해주세요..." id="search" name='movie_give'>
+                    <p id="search_icon">추천</p>
+                    <input type="submit">
+                    {% if error %}
+                    <div class="search_bx2">
+                        <p style="color:#BF270F; font-weight:bold;">앗! 목록에 없는 영화를 입력하셨습니다</p>
+                    </div>
+                    {% endif %}
+                </form>
+                <ul>
+                    <li><a href="/">내가 찜한 컨텐츠</a></li>
+                </ul>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="https://discord.com"><i class="left-menu-icon fa-brands fa-discord"></i></a>
+        <a href="https://facebook.com"><i class="left-menu-icon fa-brands fa-facebook"></i></a>
+        <a href="https://instagram.com"><i class="left-menu-icon fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com"><i class="left-menu-icon fa-brands fa-twitter"></i></a>
+        <a href="https://tiktok.com"><i class="left-menu-icon fa-brands fa-tiktok"></i></a>
+        <a href="https://reddit.com"><i class="left-menu-icon fa-brands fa-reddit"></i></a>
+        <a href="https://google.com"><i class="left-menu-icon fa-brands fa-google"></i></a>
+    </div>
+    <div class="container">
+        <div class="content-container">
+            <div class="movie-list-container">
+                <h1 class="movie-list-title recommendation-title">📽️ 이러한 영화는 어떠세요?</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list0[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list0[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list0[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list0[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list1[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list1[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list1[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list1[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list2[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list2[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list2[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list2[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list3[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list3[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list3[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list3[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list4[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list4[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list4[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list4[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list5[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list5[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list5[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list5[3] }}>WATCH</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list6[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list6[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list6[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list6[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list7[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list7[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list7[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list7[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list8[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list8[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list8[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list8[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list9[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list9[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list9[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list9[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list10[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list10[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list10[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list10[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list11[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list11[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list11[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list11[3] }}>WATCH</a>
+                        </div>                  
+                    </div>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list12[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list12[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list12[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list12[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list13[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list13[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list13[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list13[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list14[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list14[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list14[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list14[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list15[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list15[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list15[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list15[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list16[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list16[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list16[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list16[3] }}>WATCH</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src={{ list17[0] }} alt="">
+                            <span class="movie-list-item-title">{{ list17[1] }}</span>
+                            <p class="movie-list-item-desc"> {{ list17[2] }} </p>
+                            <a class="movie-list-item-button" href={{ list17[3] }}>WATCH</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='app_ball.js') }}"></script>
+</body>
+
+</html>
